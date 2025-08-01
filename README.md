@@ -1,36 +1,24 @@
 # AHB to APB Bridge Design 
 
-This repository contains a Verilog implementation of an AHB to APB Bridge along with a testbench for simulation and verification. It is based on the AMBA specifications and includes FSM logic to translate pipelined AHB transactions to non-pipelined APB transfers.
----
+This repository implements a parameterized AHB to APB Bridge System in Verilog, including:
 
-##  Features:
+AHB Master
+AHB-to-APB Bridge
+APB Slave
 
-- FSM-based bridge module with 8 states
-- Handles both **read** and **write** operations
-- Supports **single** and **burst** transfers
-- Modular **testbench** using compiler directives
-- Verified using **Icarus Verilog** and **GTKWave**
+These modules together demonstrate how to build a simple, customizable AHB-to-APB transaction system — useful for on-chip communication between high-speed AHB components and low-speed APB peripherals.
 
----
+📁 Repository Structure
 
-## 📂 Files Included
- `ahb2apb.v`    - Verilog HDL code for the AHB to APB bridge       
- `tb.v`         - Testbench to simulate read/write transfers 
- `README.md`    -This file (project documentation) 
+├── AHB_MASTER.v     # Parameterized AHB Master module
+├── BRIDGE.v         # AHB-to-APB Bridge module
+├── APB_SLAVE.v      # APB-compliant Slave 
+└── README.md        # This file
 
 
-## State Machine Overview
-
-The FSM includes the following states:
-
-- `IDLE`: Wait for a valid transaction  
-- `READ`: Read setup  
-- `WWAIT`: Write wait to capture write data  
-- `WRITE`: Write setup  
-- `WRITEP`: Pipelined write  
-- `WENABLE`: Write enable  
-- `WENABLEP`: Pipelined write enable  
-- `RENABLE`: Read enable  
-
+DATA_WIDTH	Data bus width	32
+BASE_ADDR	Valid address prefix (APB Slave)	24'h400000
+HSIZE_VALUE	AHB data transfer size	3'b010
+HPROT_VALUE	AHB protection control flags	4'b0011
 ---
 
