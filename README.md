@@ -10,27 +10,21 @@ These modules together demonstrate how to build a simple, customizable AHB-to-AP
 
 ---
 
-## 📁 Repository Structure
-├── AHB_MASTER.v 
-├── BRIDGE.v 
-├── APB_SLAVE.v 
-└── README.md 
-
 
 ##  Module Descriptions
 
-###  AHB_MASTER.v
+###  AHB_master.v
 - Generates AHB read/write transactions.
 - Drives AHB signals like `HADDR`, `HTRANS`, `HWRITE`, `HWDATA`.
 - Parameterized for `ADDR_WIDTH` and `DATA_WIDTH`.
 - Handles response via `HREADY`, `HRESP`, and receives data via `HRDATA`.
 
-### BRIDGE.v
+### ahb2apb_bridge.v
 - Translates AHB transactions into APB protocol format.
 - Implements a finite state machine (FSM) to manage transaction stages.
 - Controls APB signals like `PADDR`, `PWRITE`, `PWDATA`, `PSEL`, and `PENABLE`.
 
-### APB_SLAVE.v
+### APB_Slave.v
 - Implements a simple APB-compliant memory-mapped slave.
 - Reads/writes data to/from an internal memory array.
 - Parameterized with `ADDR_WIDTH`, `DATA_WIDTH`, and `BASE_ADDR`.
